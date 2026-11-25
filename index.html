@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christmas Quest 🎄</title>
+    <title>Noël Ewenichat</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -30,7 +30,15 @@
 
 
 
-    <!-- INTERFACE DU JEU -->
+   <!-- INTERFACE DU JEU -->
+<div class="game-frame">
+   <div class="game-frame-inner">
+
+<span class="frame-corner top-left">✦</span>
+<span class="frame-corner top-right">✦</span>
+<span class="frame-corner bottom-left">✦</span>
+<span class="frame-corner bottom-right">✦</span>
+
     <main class="game-container">
 
         <!-- COMPTEUR DE MISSION -->
@@ -52,18 +60,21 @@
 
         <!-- EN-TETE -->
         <header class="game-header">
-            <div class="game-logo">★ CHRISTMAS QUEST ★</div>
-            <div class="game-version">VERSION 2026.12</div>
+            <div class="game-logo">★ LE GRAND JEU DE NOËL ★</div>
+            <div class="game-version">VERSION 2026</div>
         </header>
 
         <!-- ACCUEIL -->
         <section class="welcome-screen">
 
             <p class="system-message">
-                &gt; SYSTEM INITIALIZED...
+                &gt; CHARGEMENT DU JEU...
             </p>
 
-            <h1>JOYEUX<br>NOËL !</h1>
+            <h1 class="mega-title">
+    <span class="line-small">JOYEUX NOËL</span>
+    <span class="line-big">EWINICHAT</span>
+</h1>
 
             <div class="title-decoration">
                 ✦ ━━━━━━━━━━━━━ ✦
@@ -71,26 +82,24 @@
 
             <p class="welcome-text">
                 Bienvenue dans le programme officiel
-                de distribution des cadeaux de Noël.
+                de distribution des cadeaux de Noël, 
+                <br>
+                Les règles sont simples : 2 cadeaux, plusieurs décisions, une mission à accomplir.
+                <br>
             </p>
 
             <p class="welcome-warning">
-                Deux cadeaux. Plusieurs décisions.
-                <br>
-                Une mission à accomplir.
+                pseudo du joueur : <strong>Ewenichat</strong>
             </p>
 
-            <div class="gift-icon">
-                🎁
-            </div>
 
             <button id="startButton" class="game-button">
-                ALLEZ, C'EST PARTI !
+                C'EST PARTI !
                 <span>▶</span>
             </button>
 
             <p class="bottom-message">
-                PRESS START TO BEGIN
+                APPUIE POUR COMMENCER
             </p>
 
         </section>
@@ -100,7 +109,7 @@
 <section class="gift-reveal hidden" id="giftReveal">
 
     <p class="system-message">
-        > REWARD UNLOCKED...
+        > CADEAU DÉBLOQUÉ...
     </p>
 
     <h2 class="reveal-title">
@@ -308,13 +317,13 @@
 
         <!-- PIED DE PAGE -->
         <footer class="game-footer">
-            <span>PLAYER 01</span>
-            <span>MADE WITH ♥ FOR YOU</span>
-            <span>© NOËL 2026</span>
+            <span>Fait avec ♥ par Gaïane, la meilleure copine du monde et nouvelle plus grande nerd de France</span>
+            <span>NOËL 2026</span>
         </footer>
 
-    </main>
-
+        </main>
+    </div>
+</div>
 
     <script src="script.js"></script>
 
