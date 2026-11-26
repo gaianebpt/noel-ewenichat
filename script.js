@@ -35,13 +35,13 @@ const gifts = {
         number: "01",
         image: "🤿",
         name: "UNE SORTIE PLONGÉE !",
-        description: "Je t'offre une sortie de plongée en mer, pour faire le petit poisson. Tu me diras la date et le lieu qui t'arrange et je me charge de faire chauffer la carte bleue"
+        description: "Je t'offre une sortie de plongée en mer, pour faire le petit poisson. Tu me diras la date et le lieu qui t'arrange et je me charge de faire chauffer la carte bleue."
     },
     2: {
         number: "02",
         image: "👕",
-        name: "UN T-SHIRT SURPRISE !",
-        description: "Un T-shirt spécialement choisi et préparé pour toi. Mais chut... le contenu reste secret !"
+        name: "UN SUPER T-SHIRT !",
+        description: "Tu auras droit à un T-shirt spécialement choisi et préparé pour toi hehehehehe"
     }
 };
 
@@ -144,20 +144,20 @@ function showConfirmation(selectedGift) {
 
     finalChoice.classList.add("reward");
     finalChoice.innerHTML = `
-        <p class="system-message">&gt; QUEST COMPLETED...</p>
+        <p class="system-message">&gt; MISSION ACCOMPLIE</p>
 
-        <h2>TON CHOIX EST FAIT !</h2>
+        <h2>BRAVO GROS CHAT</h2>
 
         <div class="decision-icon">${gift.image}</div>
 
         <h3>${gift.name}</h3>
 
         <p class="decision-text">
-            Ce cadeau est officiellement à toi !
+            Voici ton cadeau miam miam j'espère que tu es content
         </p>
 
         <p class="decision-warning">
-            ♥ JOYEUX NOËL EWINICHAT ♥
+            <3 JOYEUX NOËL EWINICHAT <3
         </p>
     `;
 

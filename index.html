@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noël Ewenichat</title>
-
+    <title>Noël Ewinichat</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    
 <!-- PAYSAGE DE NOEL -->
 <div class="winter-landscape">
-
     <div class="parallax-background">
         <img src="images/layer_1_sky.png" class="parallax-layer" alt="">
         <img src="images/layer_2_mountains.png" class="parallax-layer" alt="">
@@ -22,22 +18,17 @@
         <img src="images/layer_4_forest.png" class="parallax-layer" alt="">
         <img src="images/layer_5_foreground.png" class="parallax-layer" alt="">
     </div>
-
-    <!-- NEIGE ANIMEE -->
     <div class="snowfall"></div>
-
 </div>
 
-
-
-   <!-- INTERFACE DU JEU -->
+<!-- INTERFACE DU JEU -->
 <div class="game-frame">
-   <div class="game-frame-inner">
+<div class="game-frame-inner">
 
-<span class="frame-corner top-left">✦</span>
-<span class="frame-corner top-right">✦</span>
-<span class="frame-corner bottom-left">✦</span>
-<span class="frame-corner bottom-right">✦</span>
+    <span class="frame-corner top-left">✦</span>
+    <span class="frame-corner top-right">✦</span>
+    <span class="frame-corner bottom-left">✦</span>
+    <span class="frame-corner bottom-right">✦</span>
 
     <main class="game-container">
 
@@ -47,12 +38,10 @@
                 <span>MISSION</span>
                 <strong>Choisir ton cadeau</strong>
             </div>
-
             <div>
                 <span>PROGRESSION</span>
                 <strong id="progressText">0 %</strong>
             </div>
-
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
@@ -67,257 +56,156 @@
         <!-- ACCUEIL -->
         <section class="welcome-screen">
 
-            <p class="system-message">
-                &gt; CHARGEMENT DU JEU...
-            </p>
+            <p class="system-message">&gt; CHARGEMENT DU JEU...</p>
 
             <h1 class="mega-title">
-    <span class="line-small">JOYEUX NOËL</span>
-    <span class="line-big">EWINICHAT</span>
-</h1>
+                <span class="line-small">JOYEUX NOËL</span>
+                <span class="line-big">EWINICHAT</span>
+            </h1>
 
-            <div class="title-decoration">
-                ✦ ━━━━━━━━━━━━━ ✦
-            </div>
+            <div class="title-decoration">✦ ━━━━━━━━━━━━━ ✦</div>
 
             <p class="welcome-text">
                 Bienvenue dans le programme officiel
-                de distribution des cadeaux de Noël, 
+                de distribution des cadeaux de Noël.
                 <br>
                 Les règles sont simples : 2 cadeaux, plusieurs décisions, une mission à accomplir.
-                <br>
             </p>
 
             <p class="welcome-warning">
-                pseudo du joueur : <strong>Ewenichat</strong>
+                pseudo du joueur : <strong>Ewinichat</strong>
             </p>
-
 
             <button id="startButton" class="game-button">
                 C'EST PARTI !
                 <span>▶</span>
             </button>
 
-            <p class="bottom-message">
-                APPUIE POUR COMMENCER
+            <p class="bottom-message">APPUIE POUR COMMENCER</p>
+
+        </section>
+
+        <!-- PAGE DE REVELATION DU CADEAU -->
+        <section class="gift-reveal hidden" id="giftReveal">
+
+            <p class="system-message">&gt; MISSION ACCOMPLIE</p>
+
+            <h2 class="reveal-title">FÉLICITATIONS !</h2>
+
+            <p class="gift-unlocked">
+                ★ cadeau débloqué — <span id="giftNumber">01</span> ★
+            </p>
+
+            <div class="reveal-image-container">
+                <div class="reveal-image" id="revealImage">🤿</div>
+            </div>
+
+            <h3 class="reveal-gift-name" id="revealGiftName">UNE SORTIE PLONGÉE !</h3>
+
+            <p class="reveal-description" id="revealDescription">
+                Je t'offre une sortie de plongée en mer.
+            </p>
+
+            <button id="continueButton" class="game-button">
+                CONTINUER
+                <span>▶</span>
+            </button>
+
+        </section>
+
+        <!-- PAGE DE SELECTION DES CADEAUX -->
+        <section class="gift-selection hidden" id="giftSelection">
+
+            <p class="system-message">&gt; PREMIERE MISSION...</p>
+
+            <h2>CHOISIS TON CADEAU</h2>
+
+            <p class="selection-text">
+                Tu as le choix entre ces 2 cadeaux.
+                Lequel vas-tu choisir ?
+            </p>
+
+            <div class="gift-grid">
+                <button class="gift-card" data-gift="1">
+                    <span class="gift-number">CADEAU_01</span>
+                    <span class="gift-image">🎁</span>
+                    <span class="gift-name">CADEAU N°1</span>
+                </button>
+
+                <button class="gift-card" data-gift="2">
+                    <span class="gift-number">CADEAU_02</span>
+                    <span class="gift-image">🎁</span>
+                    <span class="gift-name">CADEAU N°2</span>
+                </button>
+            </div>
+
+        </section>
+
+        <!-- PAGE DE DECISION -->
+        <section class="gift-decision hidden" id="giftDecision">
+
+            <p class="system-message">&gt; PROCHAINE MISSION...</p>
+
+            <h2>PLOT TWIST</h2>
+
+            <p class="decision-text">
+                Tu as découvert ton premier cadeau.
+                Mais souhaites-tu vraiment t'arrêter là ?
+                Tu as le choix de garder ce cadeau ou de changer pour le 2ème cadeau
+            </p>
+
+            <div class="decision-grid">
+                <button class="decision-card" id="keepGiftButton">
+                    <span class="decision-icon">🎁</span>
+                    <strong>GARDER CE CADEAU</strong>
+                    <span>Je garde mon premier choix.</span>
+                </button>
+
+                <button class="decision-card" id="discoverOtherButton">
+                    <span class="decision-icon">❓</span>
+                    <strong>DÉCOUVRIR L'AUTRE</strong>
+                    <span>Je prends le risque de changer d'avis.</span>
+                </button>
+            </div>
+
+            <p class="decision-warning">
+                !!ATTENTION!! : Tu ne pourras revenir sur ta décision si tu changes de cadeau
             </p>
 
         </section>
 
+        <!-- PAGE DE CHOIX FINAL -->
+        <section class="final-choice hidden" id="finalChoice">
 
-<!-- PAGE DE REVELATION DU CADEAU -->
-<section class="gift-reveal hidden" id="giftReveal">
+            <p class="system-message">&gt; MISSION FINALE...</p>
 
-    <p class="system-message">
-        > CADEAU DÉBLOQUÉ...
-    </p>
+            <h2>MAIS NAAAAN PLOT TWIST ENCORE</h2>
 
-    <h2 class="reveal-title">
-        FÉLICITATIONS !
-    </h2>
-
-    <p class="gift-unlocked">
-        ★ GIFT UNLOCKED — <span id="giftNumber">01</span> ★
-    </p>
-
-    <!-- GRANDE ILLUSTRATION DU CADEAU -->
-    <div class="reveal-image-container">
-        <div class="reveal-image" id="revealImage">
-            🤿
-        </div>
-    </div>
-
-    <!-- NOM DU CADEAU -->
-    <h3 class="reveal-gift-name" id="revealGiftName">
-        UNE SORTIE PLONGÉE 
-    </h3>
-
-    <p class="reveal-description" id="revealDescription">
-        Je t'offre une sortie de plongée en mer, à
-    </p>
-
-   cher-header">
-            BON CADEAU N° <span id="voucherNumber">001</span>
-        </div>
-
-        <div class="voucher-details">
-
-            <p>
-                <span>VALABLE POUR</span>
-                <strong id="voucherOffer">
-                    Une sortie de plongée en mer
-                </strong>
+            <p class="decision-text">
+                Et oui gros chat, c'est l'esprit de Noël ! Je vais pas choisir ton cadeau à ta 
+                place quand même. Donc tu as l'honneur de pouvoir choisir le cadeau qui te fera plaisir 
+                et moi je me plirais à ta décision heheheheeh 
             </p>
 
-    <button id="continueButton" class="game-button">
-        CONTINUER
-        <span>▶</span>
-    </button>
+            <div class="decision-grid">
+                <button class="decision-card" data-final-gift="1">
+                    <span class="decision-icon">🤿</span>
+                    <strong>LA PLONGÉE</strong>
+                    <span>Une aventure sous-marine !</span>
+                </button>
 
-</section>
+                <button class="decision-card" data-final-gift="2">
+                    <span class="decision-icon">👕</span>
+                    <strong>LE T-SHIRT</strong>
+                    <span>Une surprise rien que pour toi !</span>
+                </button>
+            </div>
 
+            <p class="decision-warning">
+                LE CHOIX FINAL EST ENTRE TES MAINS MOUAHAHAAH
+            </p>
 
-
-
-<!-- PAGE DE SELECTION DES CADEAUX -->
-<section class="gift-selection hidden" id="giftSelection">
-
-    <p class="system-message">
-        > PREMIERE MISSION...
-    </p>
-
-    <h2>CHOISIS TON CADEAU</h2>
-
-    <p class="selection-text">
-        Tu as le choix entre ces 2 cadeaux.
-        Lequel vas-tu choisir ?
-    </p>
-
-    <div class="gift-grid">
-
-        <button class="gift-card" data-gift="1">
-            <span class="gift-number">CADEAU_01</span>
-            <span class="gift-image">🎁</span>
-            <span class="gift-name">CADEAU N°1</span>
-        </button>
-
-        <button class="gift-card" data-gift="2">
-            <span class="gift-number">CADEAU_02</span>
-            <span class="gift-image">🎁</span>
-            <span class="gift-name">CADEAU N°2</span>
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- PAGE DE DECISION -->
-<section class="gift-decision hidden" id="giftDecision">
-
-    <p class="system-message">
-        > DECISION REQUIRED...
-    </p>
-
-    <h2>ET MAINTENANT ?</h2>
-
-    <p class="decision-text">
-        Tu as découvert ton premier cadeau.
-        Mais souhaites-tu vraiment t'arrêter là ?
-    </p>
-
-    <div class="decision-grid">
-
-        <button class="decision-card" id="keepGiftButton">
-
-            <span class="decision-icon">🎁</span>
-
-            <strong>GARDER CE CADEAU</strong>
-
-            <span>
-                Je garde mon premier choix.
-            </span>
-
-        </button>
-
-        <button class="decision-card" id="discoverOtherButton">
-
-            <span class="decision-icon">❓</span>
-
-            <strong>DÉCOUVRIR L'AUTRE</strong>
-
-            <span>
-                Je prends le risque de changer d'avis.
-            </span>
-
-        </button>
-
-    </div>
-
-    <p class="decision-warning">
-        !!ATTENTION!! : CE CHOIX POURRAIT ÊTRE DÉFINITIF !
-    </p>
-
-</section>
-
-
-<!-- PAGE DE REVELATION DU CADEAU -->
-<section class="gift-reveal hidden" id="giftReveal">
-
-    <p class="system-message">
-        > CADEAU DÉBLOQUÉ...
-    </p>
-
-    <h2 class="reveal-title">
-        FÉLICITATIONS !
-    </h2>
-
-    <p class="gift-unlocked">
-        ★ GIFT UNLOCKED — <span id="giftNumber">01</span> ★
-    </p>
-
-    <div class="reveal-image-container">
-        <div class="reveal-image" id="revealImage">
-            🤿
-        </div>
-    </div>
-
-    <h3 class="reveal-gift-name" id="revealGiftName">
-        UNE SORTIE PLONGÉE
-    </h3>
-
-    <p class="reveal-description" id="revealDescription">
-        Je t'offre une sortie de plongée en mer.
-    </p>
-
-    <button id="continueButton" class="game-button">
-        CONTINUER
-        <span>▶</span>
-    </button>
-
-</section>
-
-
-<!-- PAGE DE CHOIX FINAL -->
-<section class="final-choice hidden" id="finalChoice">
-
-    <p class="system-message">
-        > FINAL DECISION...
-    </p>
-
-    <h2>ALORS, QUEL SERA TON CADEAU ?</h2>
-
-    <p class="decision-text">
-        Tu connais maintenant les deux surprises.
-        Il est temps de faire ton choix définitif !
-    </p>
-
-    <div class="decision-grid">
-
-        <button class="decision-card" data-final-gift="1">
-            <span class="decision-icon">🤿</span>
-            <strong>LA PLONGÉE</strong>
-            <span>Une aventure sous-marine !</span>
-        </button>
-
-        <button class="decision-card" data-final-gift="2">
-            <span class="decision-icon">👕</span>
-            <strong>LE T-SHIRT</strong>
-            <span>Une surprise rien que pour toi !</span>
-        </button>
-
-    </div>
-
-    <p class="decision-warning">
-        !!ATTENTION!! : LE CHOIX FINAL EST ENTRE TES MAINS !!
-    </p>
-
-</section>
-
-
-
-
+        </section>
 
         <!-- PIED DE PAGE -->
         <footer class="game-footer">
@@ -325,11 +213,11 @@
             <span>NOËL 2026</span>
         </footer>
 
-        </main>
-    </div>
+    </main>
+</div>
 </div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>

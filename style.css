@@ -1,10 +1,6 @@
-
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Fredoka:wght@600;700&family=Bungee&family=Mountains+of+Christmas:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Bungee&family=Silkscreen:wght@400;700&display=swap');
 
-
 :root {
-
     --forest: #123C35;
     --night: #101B35;
     --red: #A93436;
@@ -13,11 +9,7 @@
     --light-green: #B7D5C0;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     min-height: 100vh;
@@ -31,8 +23,10 @@ body {
     overflow-x: hidden;
 }
 
+.hidden { display: none !important; }
 
-/* PAYSAGE DE NOEL */
+
+/* ===== PAYSAGE ===== */
 
 .winter-landscape {
     position: fixed;
@@ -42,11 +36,7 @@ body {
     background: var(--night);
 }
 
-.parallax-background {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-}
+.parallax-background { position: absolute; inset: 0; overflow: hidden; }
 
 .parallax-layer {
     position: absolute;
@@ -57,35 +47,11 @@ body {
     image-rendering: pixelated;
 }
 
-/* NEIGE QUI TOMBE */
-
+/* NEIGE */
 .snowfall {
     position: absolute;
     inset: -350px 0 0;
     pointer-events: none;
-    opacity: 1;
-    background-image:
-        radial-gradient(3px 3px at 40px 60px, white 50%, transparent 55%),
-        radial-gradient(2px 2px at 120px 150px, white 50%, transparent 55%),
-        radial-gradient(4px 4px at 250px 100px, white 50%, transparent 55%),
-        radial-gradient(2px 2px at 350px 250px, white 50%, transparent 55%);
-    background-size: 400px 350px;
-    animation: snowfall 12s linear infinite;
-}
-
-@keyframes snowfall {
-    from { transform: translateY(0); }
-    to { transform: translateY(350px); }
-}
-
-
-/* NEIGE QUI TOMBE */
-
-.snowfall {
-    position: absolute;
-    inset: -350px 0 0;
-    pointer-events: none;
-    opacity: 1;
     background-image:
         radial-gradient(4px 4px at 40px 60px, white 50%, transparent 55%),
         radial-gradient(8px 8px at 120px 150px, white 50%, transparent 55%),
@@ -101,41 +67,18 @@ body {
 }
 
 
-/* INTERFACE PRINCIPALE */
-
-.game-container {
-    width: 100%;
-    max-width: none;
-    min-height: 680px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 28px 38px;
-    border-radius: 18px;
-
-   background-color: rgba(16, 58, 40, 0.89);
-backdrop-filter: blur(3px);
--webkit-backdrop-filter: blur(4px);
-}
-
-/* =================================
-   CADRE PIXEL ART
-================================= */
+/* ===== CADRE ET CONTENEUR ===== */
 
 .game-frame {
     width: min(784px, calc(100% - 40px));
     margin: 40px auto;
     padding: 8px;
     position: relative;
-    border-radius: 28px;
-
     z-index: 1;
-
+    border-radius: 28px;
     background: transparent;
     border: 4px solid var(--gold);
-
-     box-shadow:
+    box-shadow:
         inset 0 0 0 8px #6B4529,
         0 0 0 4px #102D28,
         0 0 0 8px var(--gold),
@@ -143,14 +86,21 @@ backdrop-filter: blur(3px);
         0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
-.game-frame-inner {
-    padding: 0;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-}
+.game-frame-inner { padding: 0; background: transparent; }
 
-/* ORNEMENTS PIXEL ART */
+.game-container {
+    width: 100%;
+    min-height: 680px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 28px 38px;
+    border-radius: 18px;
+    background-color: rgba(16, 58, 40, 0.89);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
 
 .frame-corner {
     position: absolute;
@@ -164,45 +114,27 @@ backdrop-filter: blur(3px);
     filter: drop-shadow(3px 3px 0 #5A3825);
 }
 
-.top-left {
-    top: -17px;
-    left: -17px;
-    color: var(--light-green);
-}
+.top-left { top: -17px; left: -17px; color: var(--light-green); }
+.top-right { top: -17px; right: -17px; color: var(--gold); }
+.bottom-left { bottom: -17px; left: -17px; color: var(--gold); }
+.bottom-right { bottom: -17px; right: -17px; color: var(--light-green); }
 
-.top-right {
-    top: -17px;
-    right: -17px;
-    color: var(--gold);
-}
 
-.bottom-left {
-    bottom: -17px;
-    left: -17px;
-    color: var(--gold);
-}
-
-.bottom-right {
-    bottom: -17px;
-    right: -17px;
-    color: var(--light-green);
-}
-
-/* COMPTEUR */
+/* ===== COMPTEUR ===== */
 
 .mission-hud {
     font-family: 'Silkscreen', monospace;
-    border-radius: 16px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gold);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
     padding: 12px 15px;
     margin-bottom: 20px;
     border: 1px solid var(--gold);
+    border-radius: 16px;
     background: rgba(116, 255, 120, 0.139);
-    color: var(--gold);
-    font-size: 10px;    
-    font-weight: 700;
 }
 
 .mission-hud div:not(.progress-bar) {
@@ -220,8 +152,8 @@ backdrop-filter: blur(3px);
 .progress-bar {
     grid-column: 1 / -1;
     height: 9px;
-    border: 1px solid var(--gold);
     margin-top: 5px;
+    border: 1px solid var(--gold);
     border-radius: 12px;
     overflow: hidden;
 }
@@ -235,7 +167,7 @@ backdrop-filter: blur(3px);
 }
 
 
-/* EN-TETE */
+/* ===== EN-TETE ET PIED DE PAGE ===== */
 
 .game-header {
     display: flex;
@@ -254,12 +186,20 @@ backdrop-filter: blur(3px);
     letter-spacing: 2px;
 }
 
-.game-version {
-    font-size: 9px;
+.game-version { font-size: 9px; color: var(--light-green); }
+
+.game-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--gold);
     color: var(--light-green);
+    font-size: 11px;
 }
 
-/* ACCUEIL */
+
+/* ===== ACCUEIL ===== */
 
 .welcome-screen {
     display: flex;
@@ -276,39 +216,40 @@ backdrop-filter: blur(3px);
     margin-bottom: 18px;
 }
 
-h1 {
-    font-family: 'Bungee', sans-serif; 
-    font-size: clamp(48px, 9vw, 80px);
-    line-height: 1.05;
-    background: linear-gradient(180deg, #FFF3C4, #FFF3C4);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+/* TITRE : "JOYEUX NOËL" + "EWINICHAT" */
+.mega-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Bungee', sans-serif;
+    font-weight: 400;
     letter-spacing: 2px;
-    /* text-shadow et couleur inchangés */
+    line-height: 1;
+    margin: 10px 0;
 }
-h1.mega-title .line-big {
+
+.mega-title .line-small {
+    font-size: clamp(22px, 5.5vw, 42px);
+    color: #FFF3C4;
+    margin-bottom: 12px;
+}
+
+.mega-title .line-big {
+    font-size: clamp(38px, 10.5vw, 92px);
     color: var(--red);
     -webkit-text-fill-color: var(--red);
     -webkit-text-stroke: 8px var(--gold);
     paint-order: stroke fill;
-    background: none;
-    text-shadow: none;
-    filter: none;
-    animation: titlePulse 2s ease-in-out infinite;
 }
 
-.title-decoration {
-    color: var(--gold);
-    margin: 20px 0;
+@keyframes titlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
 }
 
-.welcome-text {
-    max-width: 460px;
-    font-size: 15px;
-    line-height: 1.7;
-}
+.title-decoration { color: var(--gold); margin: 20px 0; }
+
+.welcome-text { max-width: 460px; font-size: 15px; line-height: 1.7; }
 
 .welcome-warning {
     color: var(--gold);
@@ -317,54 +258,6 @@ h1.mega-title .line-big {
     line-height: 1.9;
 }
 
-.gift-icon {
-    font-size: 58px;
-    margin: 20px 0;
-    animation: float 2s ease-in-out infinite;
-}
-
-/* BOUTON */
-
-.game-button {
-    background: var(--red);
-    border: 3px solid var(--gold);
-    color: var(--cream);
-    padding: 17px 30px;
-    font-family: 'Bungee', sans-serif;
-    font-size: 13px;
-    font-weight: 250;
-    cursor: pointer;
-    box-shadow: none;
-    transition: 0.2s;
-    animation: buttonPulse 1.6s ease-in-out infinite;
-    margin-top: 40px;
-}
-
-@keyframes buttonPulse {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(215, 174, 84, 0.7);
-    }
-    50% {
-        transform: scale(1.06);
-        box-shadow: 0 0 0 12px rgba(215, 174, 84, 0);
-    }
-}
-
-.game-button span {
-    margin-left: 12px;
-    color: var(--gold);
-}
-
-.game-button:hover {
-    animation: none;
-    transform: scale(1.05);
-    box-shadow: none;
-    background: #C04446;
-}
-
-/* BAS DE PAGE */
-
 .bottom-message {
     color: var(--light-green);
     font-size: 10px;
@@ -372,89 +265,61 @@ h1.mega-title .line-big {
     margin-top: 22px;
 }
 
-.game-footer {
-    display: flex;
-    justify-content: space-between;
-    gap: 5px;
-    padding-top: 15px;
-    border-top: 1px dashed var(--gold);
-    color: var(--light-green);
-    font-size: 11px;
+
+/* ===== BOUTONS ===== */
+
+.game-button {
+    background: var(--red);
+    border: 3px solid var(--gold);
+    color: var(--cream);
+    padding: 17px 30px;
+    margin-top: 40px;
+    font-family: 'Bungee', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: none;
+    transition: 0.2s;
+    animation: buttonPulse 1.6s ease-in-out infinite;
 }
 
-/* ANIMATIONS */
+.game-button span { margin-left: 12px; color: var(--gold); }
+
+.game-button:hover {
+    animation: none;
+    transform: scale(1.05);
+    background: #C04446;
+}
+
+@keyframes buttonPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(215, 174, 84, 0.7); }
+    50% { transform: scale(1.06); box-shadow: 0 0 0 12px rgba(215, 174, 84, 0); }
+}
 
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-9px); }
 }
 
-/* TELEPHONE */
-
-@media (max-width: 600px) {
-    body {
-        padding: 20px 12px;
-    }
-
-    .game-container {
-        min-height: 680px;
-        padding: 20px 15px;
-    }
-
-    .game-logo {
-        font-size: 10px;
-    }
-
-    .game-version {
-        font-size: 8px;
-    }
-
-    .welcome-screen {
-        padding: 35px 5px;
-    }
-
-    .welcome-text {
-        font-size: 11px;
-    }
-
-    .game-button {
-        padding: 15px 17px;
-        font-size: 11px;
-    }
-
-    .game-footer {
-        font-size: 7px;
-    }
+@keyframes revealAppear {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 
+/* ===== SELECTION DES CADEAUX ===== */
 
-/* =================================
-   PAGE DE SELECTION DES CADEAUX
-================================= */
-
-.hidden {
-    display: none !important;
-}
-
-.gift-selection {
-    text-align: center;
-    padding: 40px 10px;
-}
+.gift-selection { text-align: center; padding: 40px 10px; }
 
 .gift-selection h2 {
     font-family: 'Bungee', sans-serif;
+    font-weight: 400;
     font-size: clamp(24px, 5vw, 38px);
     color: var(--cream);
     margin-bottom: 20px;
-    text-shadow: none;
 }
 
-.selection-text {
-    font-size: 16px;
-    line-height: 1.9;
-    margin-bottom: 35px;
-}
+.selection-text { font-size: 16px; line-height: 1.9; margin-bottom: 35px; }
 
 .gift-grid {
     display: grid;
@@ -467,8 +332,8 @@ h1.mega-title .line-big {
 .gift-card {
     background: #0d32508c;
     border: 3px solid var(--gold);
-    color: var(--cream);
     border-radius: 18px;
+    color: var(--cream);
     padding: 20px 10px;
     display: flex;
     flex-direction: column;
@@ -485,57 +350,13 @@ h1.mega-title .line-big {
     box-shadow: 0 8px 0 var(--gold);
 }
 
-.gift-number {
-    color: var(--light-green);
-    font-size: 10px;
-}
-
-.gift-image {
-    font-size: 65px;
-    transition: 0.3s;
-}
-
-.gift-card:hover .gift-image {
-    transform: rotate(-8deg) scale(1.15);
-}
-
-.gift-name {
-    font-size: 14px;
-    font-weight: bold;
-    color: var(--gold);
-}
-
-.gift-description {
-    font-size: 10px;
-    color: var(--light-green);
-}
-
-.selection-warning {
-    color: var(--red);
-    font-size: 18px;
-    margin-top: 35px;
-    font-weight: 800;
-}
-
-@media (max-width: 450px) {
-    .gift-grid {
-        gap: 10px;
-    }
-
-    .gift-card {
-        padding: 15px 5px;
-    }
-
-    .gift-image {
-        font-size: 48px;
-    }
-}
+.gift-number { color: var(--light-green); font-size: 10px; }
+.gift-image { font-size: 65px; transition: 0.3s; }
+.gift-card:hover .gift-image { transform: rotate(-8deg) scale(1.15); }
+.gift-name { font-size: 14px; font-weight: bold; color: var(--gold); }
 
 
-
-/* =================================
-   PAGE DE REVELATION DES CADEAUX
-================================= */
+/* ===== REVELATION D'UN CADEAU ===== */
 
 .gift-reveal {
     text-align: center;
@@ -549,7 +370,6 @@ h1.mega-title .line-big {
     font-size: clamp(22px, 5.5vw, 40px);
     letter-spacing: 2px;
     color: var(--cream);
-    text-shadow: none;
     margin-bottom: 12px;
 }
 
@@ -560,8 +380,6 @@ h1.mega-title .line-big {
     margin-bottom: 20px;
 }
 
-/* GRANDE ILLUSTRATION */
-
 .reveal-image-container {
     width: 100%;
     max-width: 450px;
@@ -570,20 +388,12 @@ h1.mega-title .line-big {
     display: flex;
     align-items: center;
     justify-content: center;
-    background:#0d32508c;
-
+    background: #0d32508c;
     border: 3px solid var(--gold);
-    box-shadow:
-        0 0 0 4px rgba(215, 174, 84, 0.2),
-        0 12px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0 4px rgba(215, 174, 84, 0.2), 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
-.reveal-image {
-    font-size: 130px;
-    animation: float 2s ease-in-out infinite;
-}
-
-/* NOM DU CADEAU */
+.reveal-image { font-size: 130px; animation: float 2s ease-in-out infinite; }
 
 .reveal-gift-name {
     font-family: 'Space Mono', monospace;
@@ -600,52 +410,24 @@ h1.mega-title .line-big {
 }
 
 
-/* ANIMATION */
+/* ===== DECISION ET CHOIX FINAL ===== */
 
-@keyframes revealAppear {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ADAPTATION TELEPHONE */
-
-@media (max-width: 600px) {
-    .reveal-image-container {
-        height: 220px;
-    }
-
-    .reveal-image {
-        font-size: 100px;
-    }
-
-
-}
-
-
-
-
-/* =================================
-   PAGE DE DECISION
-================================= */
-
-.gift-decision {
+.gift-decision,
+.final-choice {
     text-align: center;
     padding: 40px 10px;
     animation: revealAppear 0.6s ease-out;
 }
 
-.gift-decision h2 {
-    font-family: 'Space Mono', monospace;
-    font-size: clamp(25px, 5vw, 38px);
+.gift-decision h2,
+.final-choice h2 {
+    font-family: 'Bungee', sans-serif;
+    font-size: clamp(24px, 5vw, 38px);
     color: var(--cream);
-    text-shadow: 3px 3px 0 var(--red);
+    text-shadow: none;
     margin-bottom: 20px;
+    font-weight: 400;
+    letter-spacing: 2px;
 }
 
 .decision-text {
@@ -671,12 +453,10 @@ h1.mega-title .line-big {
     justify-content: center;
     align-items: center;
     gap: 15px;
-
     background: #0d32508c;
     border: 2px solid var(--gold);
-    color: var(--cream);
     border-radius: 18px;
-
+    color: var(--cream);
     font-family: 'JetBrains Mono', monospace;
     cursor: pointer;
     transition: 0.25s;
@@ -688,14 +468,8 @@ h1.mega-title .line-big {
     box-shadow: 0 7px 0 var(--gold);
 }
 
-.decision-icon {
-    font-size: 48px;
-}
-
-.decision-card strong {
-    color: var(--gold);
-    font-size: 12px;
-}
+.decision-icon { font-size: 48px; }
+.decision-card strong { color: var(--gold); font-size: 12px; }
 
 .decision-card span:last-child {
     font-size: 10px;
@@ -705,127 +479,54 @@ h1.mega-title .line-big {
 
 .decision-warning {
     color: var(--red);
-    font-size: 30px;
-    margin-top: 35px;
-    line-height: 1.8;
-}
-
-/* TELEPHONE */
-
-@media (max-width: 450px) {
-    .decision-grid {
-        gap: 10px;
-    }
-
-    .decision-card {
-        min-height: 175px;
-        padding: 15px 7px;
-        border-radius: 18px;
-    }
-
-    .decision-card strong {
-        font-size: 10px;
-        border-radius: 18px;
-    }
-
-
-    .decision-icon {
-        font-size: 38px;
-    }
-}
-
-
-
-
-/* =================================
-   PAGE DE CHOIX FINAL
-================================= */
-
-.final-choice {
-    text-align: center;
-    padding: 40px 10px;
-    animation: revealAppear 0.6s ease-out;
-}
-
-.final-choice h2 {
-    font-family: 'Space Mono', monospace;
-    font-size: clamp(24px, 5vw, 36px);
-    color: var(--cream);
-    text-shadow: 3px 3px 0 var(--red);
-    margin-bottom: 20px;
-}
-
-.final-choice .decision-grid {
+    font-size: 19px;
     margin-top: 30px;
+    line-height: 1.8;
+    font-weight: bold;
 }
 
-.final-choice .decision-card {
-    min-height: 210px;
-}
-
-.final-choice .decision-icon {
-    font-size: 60px;
-}
-
-.final-choice .decision-warning {
-    margin-top: 35px;
-}
+.final-choice .decision-grid { margin-top: 30px; }
+.final-choice .decision-card { min-height: 210px; }
+.final-choice .decision-icon { font-size: 60px; }
 
 
+/* ===== ECRAN DE FIN (classe "reward" ajoutée par le JS) ===== */
 
-/* =================================
-   ECRAN DE RECOMPENSE FINAL
-================================= */
-
-.final-choice h2 {
-    margin-bottom: 25px;
-    animation: revealAppear 0.7s ease-out;
-}
-
-.final-choice .decision-icon {
+.final-choice.reward .decision-icon {
     font-size: 110px;
     margin: 30px auto;
     animation: rewardFloat 2s ease-in-out infinite;
     filter: drop-shadow(0 0 18px rgba(215, 174, 84, 0.65));
 }
 
-.final-choice h3 {
+.final-choice.reward h3 {
     color: var(--gold);
     font-family: 'Space Mono', monospace;
     font-size: clamp(20px, 4vw, 28px);
     margin: 20px 0;
 }
 
-.final-choice .decision-text {
-    color: var(--cream);
+.final-choice.reward .decision-text {
     font-size: 16px;
     line-height: 1.8;
     margin: 20px auto;
     max-width: 450px;
 }
 
-.final-choice .decision-warning {
+.final-choice.reward .decision-warning {
     color: var(--gold);
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 2px;
-    margin-top: 35px;
     animation: revealAppear 1.2s ease-out;
 }
 
 @keyframes rewardFloat {
-    0%, 100% {
-        transform: translateY(0) scale(1);
-    }
-    50% {
-        transform: translateY(-12px) scale(1.08);
-    }
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-12px) scale(1.08); }
 }
 
 
-
-/* =================================
-   PLUIE D'ETOILES FINALE
-================================= */
+/* ===== PLUIE D'ETOILES ===== */
 
 .celebration-stars {
     position: fixed;
@@ -844,23 +545,32 @@ h1.mega-title .line-big {
 }
 
 @keyframes starFall {
-    0% {
-        transform: translateY(-40px) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    85% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-    }
+    0% { transform: translateY(-40px) rotate(0deg); opacity: 0; }
+    10%, 85% { opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 
 
+/* ===== TELEPHONE ===== */
 
+@media (max-width: 600px) {
+    body { padding: 20px 12px; }
+    .game-container { padding: 20px 15px; }
+    .game-logo { font-size: 10px; }
+    .game-version { font-size: 8px; }
+    .welcome-screen { padding: 35px 5px; }
+    .welcome-text { font-size: 11px; }
+    .game-button { padding: 15px 17px; font-size: 11px; }
+    .game-footer { font-size: 7px; }
+    .reveal-image-container { height: 220px; }
+    .reveal-image { font-size: 100px; }
+}
 
-
+@media (max-width: 450px) {
+    .gift-grid, .decision-grid { gap: 10px; }
+    .gift-card { padding: 15px 5px; }
+    .gift-image { font-size: 48px; }
+    .decision-card { min-height: 175px; padding: 15px 7px; }
+    .decision-card strong { font-size: 10px; }
+    .decision-icon { font-size: 38px; }
+}
