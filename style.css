@@ -124,7 +124,7 @@ body {
 
 .mission-hud {
     font-family: 'Silkscreen', monospace;
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--gold);
     display: grid;
@@ -253,7 +253,7 @@ body {
 
 .welcome-warning {
     color: var(--gold);
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 13px;
     line-height: 1.9;
 }
