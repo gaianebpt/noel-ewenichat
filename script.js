@@ -1,11 +1,9 @@
-
 // =================================
-// CHRISTMAS QUEST
-// FONCTIONNEMENT DU JEU
+// CHRISTMAS QUEST - FONCTIONNEMENT DU JEU
 // =================================
 
 
-// RECUPERATION DES ELEMENTS HTML
+// ELEMENTS HTML
 
 const startButton = document.getElementById("startButton");
 const welcomeScreen = document.querySelector(".welcome-screen");
@@ -15,7 +13,7 @@ const giftDecision = document.getElementById("giftDecision");
 const finalChoice = document.getElementById("finalChoice");
 
 const giftCards = document.querySelectorAll(".gift-card");
-const finalGiftCards = document.querySelectorAll(".decision-card");
+const finalGiftCards = document.querySelectorAll("[data-final-gift]");
 
 const keepGiftButton = document.getElementById("keepGiftButton");
 const discoverOtherButton = document.getElementById("discoverOtherButton");
@@ -24,52 +22,37 @@ const continueButton = document.getElementById("continueButton");
 const progressText = document.getElementById("progressText");
 const progressFill = document.querySelector(".progress-fill");
 
-
-// ELEMENTS DE LA PAGE DE REVELATION
-
 const giftNumber = document.getElementById("giftNumber");
 const revealImage = document.getElementById("revealImage");
 const revealGiftName = document.getElementById("revealGiftName");
 const revealDescription = document.getElementById("revealDescription");
-
-const voucherNumber = document.getElementById("voucherNumber");
-const voucherOffer = document.getElementById("voucherOffer");
-const voucherLocation = document.getElementById("voucherLocation");
-const voucherDate = document.getElementById("voucherDate");
 
 
 // DONNEES DES CADEAUX
 
 const gifts = {
     1: {
+        number: "01",
         image: "🤿",
         name: "UNE SORTIE PLONGÉE !",
-        description: "Une sortie en mer entièrement offerte par ta personne préférée.",
-        number: "01",
-        offer: "Une sortie de plongée en mer",
-        location: "À définir ensemble",
-        date: "Selon tes disponibilités"
+        description: "Je t'offre une sortie de plongée en mer, pour faire le petit poisson. Tu me diras la date et le lieu qui t'arrange et je me charge de faire chauffer la carte bleue"
     },
     2: {
+        number: "02",
         image: "👕",
         name: "UN T-SHIRT SURPRISE !",
-        description: "Un T-shirt spécialement choisi et préparé pour toi. Mais chut... le contenu reste secret !",
-        number: "02",
-        offer: "Un T-shirt surprise",
-        location: "Une surprise à découvrir",
-        date: "À recevoir bientôt"
+        description: "Un T-shirt spécialement choisi et préparé pour toi. Mais chut... le contenu reste secret !"
     }
 };
 
 
-// VARIABLES POUR SUIVRE LE PARCOURS
+// SUIVI DU PARCOURS
 
 let firstGift = null;
-let currentGift = null;
 let discoveredBoth = false;
 
 
-// AFFICHER LA PROGRESSION
+// PROGRESSION
 
 function updateProgress(value) {
     progressText.textContent = value + " %";
@@ -82,17 +65,10 @@ function updateProgress(value) {
 function showGift(giftNumberSelected) {
     const gift = gifts[giftNumberSelected];
 
-    currentGift = giftNumberSelected;
-
     giftNumber.textContent = gift.number;
     revealImage.textContent = gift.image;
     revealGiftName.textContent = gift.name;
     revealDescription.textContent = gift.description;
-
-    voucherNumber.textContent = "00" + giftNumberSelected;
-    voucherOffer.textContent = gift.offer;
-    voucherLocation.textContent = gift.location;
-    voucherDate.textContent = gift.date;
 
     giftSelection.classList.add("hidden");
     giftDecision.classList.add("hidden");
@@ -105,18 +81,17 @@ function showGift(giftNumberSelected) {
 
 // BOUTON COMMENCER
 
-startButton.addEventListener("click", function() {
+startButton.addEventListener("click", function () {
     welcomeScreen.classList.add("hidden");
     giftSelection.classList.remove("hidden");
-
     updateProgress(20);
 });
 
 
 // PREMIER CHOIX
 
-giftCards.forEach(function(card) {
-    card.addEventListener("click", function() {
+giftCards.forEach(function (card) {
+    card.addEventListener("click", function () {
         firstGift = Number(card.dataset.gift);
         showGift(firstGift);
     });
@@ -125,7 +100,7 @@ giftCards.forEach(function(card) {
 
 // BOUTON CONTINUER APRES UNE REVELATION
 
-continueButton.addEventListener("click", function() {
+continueButton.addEventListener("click", function () {
     giftReveal.classList.add("hidden");
 
     if (discoveredBoth) {
@@ -140,39 +115,36 @@ continueButton.addEventListener("click", function() {
 
 // GARDER LE PREMIER CADEAU
 
-keepGiftButton.addEventListener("click", function() {
+keepGiftButton.addEventListener("click", function () {
     showConfirmation(firstGift);
 });
 
 
 // DECOUVRIR L'AUTRE CADEAU
 
-discoverOtherButton.addEventListener("click", function() {
+discoverOtherButton.addEventListener("click", function () {
     discoveredBoth = true;
-
-    const otherGift = firstGift === 1 ? 2 : 1;
-
-    showGift(otherGift);
+    showGift(firstGift === 1 ? 2 : 1);
 });
 
 
 // CHOIX DEFINITIF APRES AVOIR DECOUVERT LES DEUX CADEAUX
 
-finalGiftCards.forEach(function(card) {
-    card.addEventListener("click", function() {
-        const selectedGift = Number(card.dataset.finalGift);
-        showConfirmation(selectedGift);
+finalGiftCards.forEach(function (card) {
+    card.addEventListener("click", function () {
+        showConfirmation(Number(card.dataset.finalGift));
     });
 });
 
 
-// CONFIRMATION DU CADEAU FINAL
+// ECRAN DE FIN
 
 function showConfirmation(selectedGift) {
     const gift = gifts[selectedGift];
 
+    finalChoice.classList.add("reward");
     finalChoice.innerHTML = `
-        <p class="system-message">> QUEST COMPLETED...</p>
+        <p class="system-message">&gt; QUEST COMPLETED...</p>
 
         <h2>TON CHOIX EST FAIT !</h2>
 
@@ -185,7 +157,7 @@ function showConfirmation(selectedGift) {
         </p>
 
         <p class="decision-warning">
-            ♥ JOYEUX NOËL EWEN ♥
+            ♥ JOYEUX NOËL EWINICHAT ♥
         </p>
     `;
 
@@ -195,40 +167,29 @@ function showConfirmation(selectedGift) {
     finalChoice.classList.remove("hidden");
 
     updateProgress(100);
-        createStarRain();
+    createStarRain();
 }
 
-    
-// =================================
+
 // PLUIE D'ETOILES
-// =================================
 
 function createStarRain() {
-
     const container = document.createElement("div");
     container.classList.add("celebration-stars");
-
     document.body.appendChild(container);
 
     for (let i = 0; i < 60; i++) {
-
         const star = document.createElement("span");
         star.classList.add("falling-star");
-
         star.textContent = "★";
-
         star.style.left = Math.random() * 100 + "%";
         star.style.fontSize = (12 + Math.random() * 22) + "px";
         star.style.animationDuration = (3 + Math.random() * 4) + "s";
         star.style.animationDelay = Math.random() * 3 + "s";
-
         container.appendChild(star);
     }
 
-    setTimeout(function() {
+    setTimeout(function () {
         container.remove();
-    }, 10000);
+    }, 11000);
 }
-
-
-    
