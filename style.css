@@ -112,6 +112,7 @@ body {
     justify-content: center;
     font-size: 38px;
     filter: drop-shadow(3px 3px 0 #5A3825);
+    color: #ffffff;
 }
 
 .top-left { top: -17px; left: -17px; color: var(--light-green); }
